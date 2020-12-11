@@ -19,7 +19,7 @@
                 <tbody>
                 {% for user_id in users_id %}
                     <tr>
-                        <td scope="row">{{ user_id.user_name }}</td>
+                        <td scope="row">{{ user_id.username }}</td>
                         <td data-title="Budget" data-type="currency">{{ user_id.user_token }}</td>
                         {% if uploaded_file_url %}
                             <td data-title="Budget" data-type="currency"><a href="">{{ user_id.user_car }}</a></td>
