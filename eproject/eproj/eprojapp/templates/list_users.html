@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/pen.css' %}">
+
+    <div class="centerstage">
+        <div class="container">
+            <caption>LIST OF USERS</caption>
+
+            <table id="table_tokens" class="responsive-table">
+                <thead>
+                <tr>
+                    <th scope="col">USER NAME</th>
+                    <th scope="col">USER TOKEN</th>
+                    <th scope="col">USER CAR</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {% for user_id in users_id %}
+                    <tr>
+                        <td scope="row">{{ user_id.user_name }}</td>
+                        <td data-title="Budget" data-type="currency">{{ user_id.user_token }}</td>
+                        {% if uploaded_file_url %}
+                            <td data-title="Budget" data-type="currency"><a href="">{{ user_id.user_car }}</a></td>
+                        {% else %}
+                            <td data-title="Budget" data-type="currency">{{ user_id.user_car }}</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <br>
+        {% if users_id.has_other_pages %}
+            <ul class="pagination">
+                {% if users_id.has_previous %}
+                    <li><a href="?page={{ users_id.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                    <li class="disabled"><span>&laquo;</span></li>
+                {% endif %}
+                {% for i in users_id.paginator.page_range %}
+                    {% if users_id.number == i %}
+                        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                    {% else %}
+                        <li><a href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if users_id.has_next %}
+                    <li><a href="?page={{ users_id.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                    <li class="disabled"><span>&raquo;</span></li>
+                {% endif %}
+            </ul>
+        {% endif %}
+        {# Each "contact" is a Contact model object. #}
+    </div>
+{% endblock %}
+

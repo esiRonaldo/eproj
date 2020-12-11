@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -29,6 +30,21 @@ def about_page(request):
     return render(request, 'about.html')
 
 
+@login_required
+def users_list(request):
+    users = User.objects.all()
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(users, 4)
+    try:
+        users_id = paginator.page(page)
+    except EmptyPage:
+        users_id = paginator.page(1)
+
+    return render(request, 'list_users.html', {'users_id': users_id})
+
+
+@login_required
 def tokens_list(request):
     tokens = Tokens.objects.all()
     page = request.GET.get('page', 1)

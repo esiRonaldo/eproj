@@ -8,5 +8,5 @@ urlpatterns = [
     path('forms', views.form_name_view, name='forms'),
     path('list', views.tokens_list, name='list'),
     path('about', views.about_page, name='about'),
-   # path('page', views.pagination, name='page'),
+    path('listofusers', views.users_list, name='user_list'),
 ]
