@@ -1,4 +1,4 @@
-from django.core.paginator import Paginator, EmptyPage
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
@@ -29,23 +29,16 @@ def about_page(request):
     return render(request, 'about.html')
 
 
-def pagination(request):
-    token_list = Tokens.objects.all()
-    paginator = Paginator(token_list, 4)  # Show  tokens per page.
-    number_of_pages = paginator.num_pages
-
-    page_number = request.GET.get('page')
-    try:
-        page_obj = paginator.get_page(page_number)
-    except EmptyPage:
-        page_obj = paginator.get_page(1)
-    page_obj= {'page_obj': page_obj}
-    return page_obj
-
-
 def tokens_list(request):
     tokens = Tokens.objects.all()
-    dict = {'user_ids': tokens}
+    page = request.GET.get('page', 1)
 
-   # pagination(request)
-    return render(request, 'list_tokens.html', context=dict)
+    paginator = Paginator(tokens, 4)
+    try:
+        users = paginator.page(page)
+        print("paaaaaaaaaaaasssssssssssss")
+    except EmptyPage:
+        users = paginator.page(1)
+        print("erooooooooooooooooooor")
+
+    return render(request, 'list_tokens.html', {'users': users})
