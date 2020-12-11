@@ -9,7 +9,9 @@
     position: relative;
 }
 
-
+#scroll-container {
+  scroll-padding: 50px 0 0 50px;
+}
 
 #table_tokens {
     position: relative;

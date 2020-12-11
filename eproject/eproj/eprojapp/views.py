@@ -1,10 +1,10 @@
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.views.generic import CreateView
 
 from eprojapp import forms
-from eprojapp.models import User, Tokens
+from eprojapp.models import User, Tokens, Car
 
 
 # Create your views here.
@@ -58,3 +58,8 @@ def tokens_list(request):
         print("erooooooooooooooooooor")
 
     return render(request, 'list_tokens.html', {'users': users})
+
+
+class CarCreateView(CreateView):
+    model = Car
+    fields = ('model', 'series', 'kilometer', 'price', 'img')
