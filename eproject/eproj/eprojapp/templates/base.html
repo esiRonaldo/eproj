@@ -28,18 +28,13 @@
                 {% if user.is_authenticated %}
                     <p5>Hello, {{ user.first_name }}</p5>
 
-                    {% if request.path == "/listofusers" %}
-                        <a class="nav-item nav-link" href="{% url 'list' %}">Tokens</a>
-                        <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
-
-                    {% elif request.path == '/list' %}
+                    {% if request.path != "/listofusers" %}
                         <a class="nav-item nav-link" href="{% url 'user_list' %}">Users</a>
-                        <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
-                    {% else %}
-                        <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
-                        <a class="nav-item nav-link" href="{% url 'user_list' %}">Users</a>
+                    {% endif %}
+                    {%if request.path != '/list' %}
                         <a class="nav-item nav-link" href="{% url 'list' %}">Tokens</a>
                     {% endif %}
+                     <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
                 {% else %}
                     <a class="nav-item nav-link" href="{% url 'login_signup' %}">Login or Sign up</a>
                 {% endif %}

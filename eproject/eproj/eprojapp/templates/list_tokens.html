@@ -19,47 +19,54 @@
         </div></span>
 
             <br>
-            <table id="table_tokens" class="responsive-table">
-                <thead>
-                <tr>
-                    <th scope="col">TOKEN NAME</th>
-                    <th scope="col">TOKEN MODEL</th>
-                </tr>
-                </thead>
-
-                <tbody>
-                {% for token in users %}
+            <div class="scrollit">
+                <table id="table_tokens" class="responsive-table">
+                    <thead>
                     <tr>
-                        <td scope="row">{{ token.name }}</td>
-                        <td data-title="Budget" data-type="currency">{{ token.token_model }}</td>
+                        <th scope="col">TOKEN NAME</th>
+                        <th scope="col">TOKEN MODEL</th>
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        <br>
-        {% if users.has_other_pages %}
-            <ul class="pagination">
-                {% if users.has_previous %}
-                    <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
-                {% else %}
-                    <li class="disabled"><span>&laquo;</span></li>
-                {% endif %}
-                {% for i in users.paginator.page_range %}
-                    {% if users.number == i %}
-                        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-                    {% else %}
-                        <li><a href="?page={{ i }}">{{ i }}</a></li>
-                    {% endif %}
-                {% endfor %}
-                {% if users.has_next %}
-                    <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
-                {% else %}
-                    <li class="disabled"><span>&raquo;</span></li>
-                {% endif %}
-            </ul>
-        {% endif %}
+                    </thead>
 
+                    <tbody>
+                    {% for token in users %}
+                        <tr>
+                            <td scope="row">{{ token.name }}</td>
+                            <td data-title="Budget" data-type="currency">{{ token.token_model }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% block paginator %}
+            <br>
+            {% if users.has_other_pages %}
+                <ul class="pagination">
+                    {% if users.has_previous %}
+                        <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+                    {% else %}
+                        <li class="disabled"><span>&laquo;</span></li>
+                    {% endif %}
+                    {% for i in users.paginator.page_range %}
+                        {% if users.number == i %}
+                            <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                        {% else %}
+                            <li><a href="?page={{ i }}">{{ i }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if users.has_next %}
+                        <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
+                    {% else %}
+                        <li class="disabled"><span>&raquo;</span></li>
+                    {% endif %}
+                </ul>
+            {% endif %}
+
+        {% endblock %}
+        <script>
+
+        </script>
     </div>
 {% endblock %}
 

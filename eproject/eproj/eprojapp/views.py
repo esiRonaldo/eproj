@@ -10,6 +10,16 @@ from eprojapp.models import User, Tokens, Car
 # Create your views here.
 
 
+def paginate_qs(request, qs):
+    page = request.GET.get('page', 1)
+    paginator = Paginator(qs, 4)
+    try:
+        qs = paginator.page(page)
+    except EmptyPage:
+        qs = paginator.page(1)
+    return qs
+
+
 def home_page(request):
     return render(request, 'index.html')
 
@@ -33,31 +43,15 @@ def about_page(request):
 @login_required
 def users_list(request):
     users = User.objects.all()
-    page = request.GET.get('page', 1)
-
-    paginator = Paginator(users, 4)
-    try:
-        users_id = paginator.page(page)
-    except EmptyPage:
-        users_id = paginator.page(1)
-
-    return render(request, 'list_users.html', {'users_id': users_id})
+    users = paginate_qs(request, users)
+    return render(request, 'list_users.html', {'users_id': users})
 
 
 @login_required
 def tokens_list(request):
     tokens = Tokens.objects.all()
-    page = request.GET.get('page', 1)
-
-    paginator = Paginator(tokens, 4)
-    try:
-        users = paginator.page(page)
-        print("paaaaaaaaaaaasssssssssssss")
-    except EmptyPage:
-        users = paginator.page(1)
-        print("erooooooooooooooooooor")
-
-    return render(request, 'list_tokens.html', {'users': users})
+    tokens = paginate_qs(request, tokens)
+    return render(request, 'list_tokens.html', {'users': tokens})
 
 
 class CarCreateView(CreateView):
