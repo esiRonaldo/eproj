@@ -1,6 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
+<head>
+ <script>
+        var rangeSlider = function () {
+            var slider = $('.range-slider'),
+                range = $('.range-slider__range'),
+                value = $('.range-slider__value');
 
+            slider.each(function () {
+                value.each(function () {
+                    var value = $(this).prev().attr('value');
+                    $(this).html(value);
+                });
+
+                range.on('input', function () {
+                    $(this).next(value).html(this.value);
+                });
+            });
+        };
+
+        rangeSlider();
+    </script>
+</head>
 
     <style>
         Result Skip Results Iframe
@@ -122,24 +143,5 @@
     <div class="range-slider"></div>
     <input class="range-slider__range" type="range" value="100" min="0" max="60000" step="100">
     <span class="range-slider__value">0</span>
-     <script>
-        var rangeSlider = function () {
-            var slider = $('.range-slider'),
-                range = $('.range-slider__range'),
-                value = $('.range-slider__value');
 
-            slider.each(function () {
-                value.each(function () {
-                    var value = $(this).prev().attr('value');
-                    $(this).html(value);
-                });
-
-                range.on('input', function () {
-                    $(this).next(value).html(this.value);
-                });
-            });
-        };
-
-        rangeSlider();
-    </script>
 {% endblock %}
