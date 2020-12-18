@@ -19,7 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d84f8088-7167-4e2c-9682-43dda8a1c4e8" name="Default Changelist" comment="" />
+    <list default="true" id="d84f8088-7167-4e2c-9682-43dda8a1c4e8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fiftyfeed/decorators.py" beforeDir="false" afterPath="$PROJECT_DIR$/Fiftyfeed/decorators.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fiftyfeed/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Fiftyfeed/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eproject/eproj/eprojapp/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/../eproject/eproj/eprojapp/templates/base.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -88,7 +94,8 @@
       <option name="presentableId" value="Default" />
       <updated>1608044277345</updated>
       <workItem from="1608044278450" duration="14000" />
-      <workItem from="1608044314972" duration="8034000" />
+      <workItem from="1608044314972" duration="9100000" />
+      <workItem from="1608292582889" duration="6159000" />
     </task>
     <servers />
   </component>
@@ -108,21 +115,21 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1874" height="275" key="GridCell.Tab.0.bottom" timestamp="1608051993705">
+    <state width="1874" height="275" key="GridCell.Tab.0.bottom" timestamp="1608299264272">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state width="1874" height="275" key="GridCell.Tab.0.bottom/0.0.1920.1044@0.0.1920.1044" timestamp="1608051993705" />
-    <state width="1874" height="275" key="GridCell.Tab.0.center" timestamp="1608051993705">
+    <state width="1874" height="275" key="GridCell.Tab.0.bottom/0.0.1920.1044@0.0.1920.1044" timestamp="1608299264272" />
+    <state width="1874" height="275" key="GridCell.Tab.0.center" timestamp="1608299264271">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state width="1874" height="275" key="GridCell.Tab.0.center/0.0.1920.1044@0.0.1920.1044" timestamp="1608051993705" />
-    <state width="1874" height="275" key="GridCell.Tab.0.left" timestamp="1608051993704">
+    <state width="1874" height="275" key="GridCell.Tab.0.center/0.0.1920.1044@0.0.1920.1044" timestamp="1608299264271" />
+    <state width="1874" height="275" key="GridCell.Tab.0.left" timestamp="1608299264271">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state width="1874" height="275" key="GridCell.Tab.0.left/0.0.1920.1044@0.0.1920.1044" timestamp="1608051993704" />
-    <state width="1874" height="275" key="GridCell.Tab.0.right" timestamp="1608051993705">
+    <state width="1874" height="275" key="GridCell.Tab.0.left/0.0.1920.1044@0.0.1920.1044" timestamp="1608299264271" />
+    <state width="1874" height="275" key="GridCell.Tab.0.right" timestamp="1608299264272">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state width="1874" height="275" key="GridCell.Tab.0.right/0.0.1920.1044@0.0.1920.1044" timestamp="1608051993705" />
+    <state width="1874" height="275" key="GridCell.Tab.0.right/0.0.1920.1044@0.0.1920.1044" timestamp="1608299264272" />
   </component>
 </project>

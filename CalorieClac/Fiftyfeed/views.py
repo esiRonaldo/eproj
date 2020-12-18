@@ -77,8 +77,10 @@ def registerPage(request):
             Customer.objects.create(user=user, name=username, email=email)
             messages.success(request, 'Account created for ' + username)
             return redirect('login')
-        context = {'form': form}
-        return render(request, 'register.html', context)
+    else:
+        form = createUserForm()
+    context = {'form': form}
+    return render(request, 'register.html', context)
 
 
 @unauthorized_user
