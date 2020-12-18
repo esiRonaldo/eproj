@@ -57,3 +57,7 @@ def tokens_list(request):
 class CarCreateView(CreateView):
     model = Car
     fields = ('model', 'series', 'kilometer', 'price', 'img')
+
+
+def sound_sensor(request):
+    return render(request, 'sound_sensor.html')

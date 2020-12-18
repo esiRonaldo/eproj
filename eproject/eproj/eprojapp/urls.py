@@ -9,5 +9,6 @@ urlpatterns = [
     path('list', views.tokens_list, name='list'),
     path('about', views.about_page, name='about'),
     path('listofusers', views.users_list, name='user_list'),
-    path('formcar',views.CarCreateView.as_view(),name='formcar')
+    path('formcar', views.CarCreateView.as_view(), name='formcar'),
+    path('soundsensor', views.sound_sensor, name='soundsensor'),
 ]
