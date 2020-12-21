@@ -1,11 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-    <head>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-
-    </head>
-
-    <body>
     <style>
         Result Skip Results Iframe
         EDIT ON
@@ -187,12 +181,20 @@
 
         View SCSS Code
     </style>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    </head>
+
+    <body>
+
     <div class="range-slider">
         <span id="topic">SENSOR</span>
         <span><div class="toggle">
             <input id="inputoff-on" type="checkbox">
-            <lable for="" class="onbtn">ON</lable>
-            <lable for="" class="offbtn">OFF</lable>
+{#                 <button type="submit" value={{excel_path}} onclick="location.href='{% url 'downloadexcel' %}'" name='mybtn2'>Download Excel file</button>#}
+{#            <lable for="" class="onbtn" value={{ noise_sensor.main }} onclick="location.href='{% url 'soundsensor' %}'"> ON</lable>#}
+{#            <lable for="" class="offbtn" value={{ sys.exit }} onclick="location.href='{% url 'soundsensor' %}'">OFF</lable>#}
         </div></span>
         <br><br>
         <span id="t1">sensitivity rate</span>
@@ -218,17 +220,7 @@
                 });
             });
         };
-
         rangeSlider();
-
-        $(document).ready(function () {
-            $(".onbtn").click(function () {
-                $("#sensId").fadeOut();
-            });
-            $(".offbtn").click(function () {
-                $("#sensId").fadeIn();
-            });
-        });
     </script>
     </body>
 {% endblock %}

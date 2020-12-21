@@ -72,8 +72,8 @@ class CarCreateView(CreateView):
 def sound_sensor(request):
     MAX_RANGE=60000
     MIN_RANGE=0
-    #noise_sensor.main()
+    noise_sensor.main()
     #post()
-    #sys.exit()
+    sys.exit()
 
     return render(request, 'sound_sensor.html')
