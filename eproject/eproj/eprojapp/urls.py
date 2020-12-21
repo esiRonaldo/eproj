@@ -11,4 +11,5 @@ urlpatterns = [
     path('listofusers', views.users_list, name='user_list'),
     path('formcar', views.CarCreateView.as_view(), name='formcar'),
     path('soundsensor', views.sound_sensor, name='soundsensor'),
+    path('soundsensoron',views.noise_sensor_on,name="soundsensoron"),
 ]

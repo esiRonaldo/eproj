@@ -6,6 +6,7 @@ from eprojapp import forms, noise_sensor
 from eprojapp.models import User, Tokens, Car
 import sys
 
+
 # Create your views here.
 
 
@@ -57,7 +58,8 @@ class CarCreateView(CreateView):
     model = Car
     fields = ('model', 'series', 'kilometer', 'price', 'img')
 
-#----------printong error in browser------add later
+
+# ----------printong error in browser------add later
 
 # def post(self, request, format=None):
 #     serializer = DataSerializer(data=request.data)
@@ -70,10 +72,18 @@ class CarCreateView(CreateView):
 #     return error
 
 def sound_sensor(request):
-    MAX_RANGE=60000
-    MIN_RANGE=0
-    noise_sensor.main()
-    #post()
-    sys.exit()
+    MAX_RANGE = 60000
+    MIN_RANGE = 0
+    TOGLLE_BUTTON = False
+
+    if (TOGLLE_BUTTON == True):
+        noise_sensor.main()
+
+    # post()
+    # sys.exit()
 
     return render(request, 'sound_sensor.html')
+
+def noise_sensor_on(request):
+
+    return render(request, 'sound_sensor_on.html')
