@@ -3,10 +3,12 @@
 <head>
     <meta charset="utf-8">
     <title>Ben Hur</title>
+    <script src="jquery-3.5.1.min.js"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+    <!-- NAVBAR  -->
     <!-- NAVBAR  -->
     <script>
         function login_timeout() {
@@ -17,77 +19,84 @@
             }, 300000);
         }
 
-        login_timeout();
+        {% if user.is_authenticated %}
+            login_timeout();
+        {% endif %}
     </script>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="{% url 'home' %}">Welcome to Benhur GmbH</a>
+</head>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'home' %}">Welcome to Benhur GmbH</a>
 
-        <!-- Add a "hamburger". Remember to add jQuery and JavaScript CDNs -->
-        <!-- at the bottom of the body section for this to work -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-                aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <!-- Add a "hamburger". Remember to add jQuery and JavaScript CDNs -->
+    <!-- at the bottom of the body section for this to work -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+            aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <!-- Add a link to the Signup page -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link" href="{% url 'jobs' %}">Jobs</a>
-                <a class="nav-item nav-link" href="{% url 'about' %}">About</a>
-                <!-- Too much repeating-->
-                {% if user.is_authenticated %}
-                    <p5>Hello, {{ user.first_name }}</p5>
+    <!-- Add a link to the Signup page -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="{% url 'jobs' %}">Jobs</a>
+            <a class="nav-item nav-link" href="{% url 'about' %}">About</a>
+            <a id="sens" class="nav-item nav-link" href="{% url 'soundsensor' %}">Sound Sensor</a>
+            <!-- Too much repeating-->
+            {% if user.is_authenticated %}
+                <p5>Hello, {{ user.first_name }}</p5>
 
-                    {% if request.path != "/listofusers" %}
-                        <a class="nav-item nav-link" href="{% url 'user_list' %}">Users</a>
-                    {% endif %}
-                    {% if request.path != '/list' %}
-                        <a class="nav-item nav-link" href="{% url 'list' %}">Tokens</a>
-                    {% endif %}
-                    <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
-                {% else %}
-                    <a class="nav-item nav-link" href="{% url 'login_signup' %}">Login or Sign up</a>
+                {% if request.path != "/listofusers" %}
+                    <a class="nav-item nav-link" href="{% url 'user_list' %}">Users</a>
                 {% endif %}
-            </div>
-        </div><!-- /.navbar-collapse -->
-
-    </nav>
-
-    <div class="container">
-        <div class="jumbotron">
-            {% block content %}
-            {% endblock %}
-
-        </div><!-- /.jumbotron -->
-    </div><!-- /.container -->
-
-    <div class="container">
-        <h2>Current Projects</h2>
-        <div class="row">
-            <div class="col-lg-4 col-6 px-0"><img class="img-thumbnail img-fluid"
-                                                  src="https://www.benhur.de/wp-content/uploads/2019/10/DBB_Adcada_cc_1905_L01-6-LL_web.jpg"
-                                                  alt=""></div>
-            <div class="col-lg-4 col-6 px-0"><img class="img-thumbnail img-fluid"
-                                                  src="https://www.benhur.de/wp-content/uploads/2017/02/0011_DSC02506.jpg"
-                                                  alt=""></div>
-            <div class="col-lg-4 col-6 px-0"><img class="img-thumbnail img-fluid"
-                                                  src="https://www.benhur.de/wp-content/uploads/2017/02/DSC02523-Medium.jpg"
-                                                  alt=""></div>
-            <div class="col-lg-4 col-6 px-0"><img class="img-thumbnail img-fluid"
-                                                  src="https://www.benhur.de/wp-content/uploads/2017/02/0014_Fotos-Hintergrund-1-Retusche-Hell.jpg"
-                                                  alt=""></div>
+                {% if request.path != '/list' %}
+                    <a class="nav-item nav-link" href="{% url 'list' %}">Tokens</a>
+                {% endif %}
+                <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+            {% else %}
+                <a class="nav-item nav-link" href="{% url 'login_signup' %}">Login or Sign up</a>
+            {% endif %}
         </div>
-    </div><!-- /.container -->
+    </div><!-- /.navbar-collapse -->
+
+</nav>
+
+<div class="container">
+    <div class="jumbotron">
+        {% block content %}
+        {% endblock %}
+
+    </div><!-- /.jumbotron -->
+</div><!-- /.container -->
+
+<div class="container">
+    <h2>Current Projects</h2>
+    <div class="row">
+        <div class="col-lg-4 col-6 px-0"><img class="img-thumbnail img-fluid"
+                                              src="https://www.benhur.de/wp-content/uploads/2019/10/DBB_Adcada_cc_1905_L01-6-LL_web.jpg"
+                                              alt=""></div>
+        <div class="col-lg-4 col-6 px-0"><img class="img-thumbnail img-fluid"
+                                              src="https://www.benhur.de/wp-content/uploads/2017/02/0011_DSC02506.jpg"
+                                              alt=""></div>
+        <div class="col-lg-4 col-6 px-0"><img class="img-thumbnail img-fluid"
+                                              src="https://www.benhur.de/wp-content/uploads/2017/02/DSC02523-Medium.jpg"
+                                              alt=""></div>
+        <div class="col-lg-4 col-6 px-0"><img class="img-thumbnail img-fluid"
+                                              src="https://www.benhur.de/wp-content/uploads/2017/02/0014_Fotos-Hintergrund-1-Retusche-Hell.jpg"
+                                              alt=""></div>
+    </div>
+</div><!-- /.container -->
 
 
-    <!-- Need to have JQuery and Javascript for DropDown Actions to work -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-            crossorigin="anonymous"></script>
+<!-- Need to have JQuery and Javascript for DropDown Actions to work -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+<script>
 
-    </body>
+</script>
+
+</body>
 </html>
