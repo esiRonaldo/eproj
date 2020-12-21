@@ -1,28 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
-<head>
- <script>
-        var rangeSlider = function () {
-            var slider = $('.range-slider'),
-                range = $('.range-slider__range'),
-                value = $('.range-slider__value');
-
-            slider.each(function () {
-                value.each(function () {
-                    var value = $(this).prev().attr('value');
-                    $(this).html(value);
+    <head>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("sens").click(function () {
+                    $("sensId").fadeOut();
                 });
-
-                range.on('input', function () {
-                    $(this).next(value).html(this.value);
+                $("sens").click(function () {
+                    $("").fadeIn();
                 });
             });
-        };
+        </script>
+    </head>
 
-        rangeSlider();
-    </script>
-</head>
-
+    <body>
     <style>
         Result Skip Results Iframe
         EDIT ON
@@ -39,6 +31,65 @@
             body {
                 padding: 60px;
             }
+        }
+
+        #inputoff-on[type="checkbox"] {
+            position: relative;
+            width: 100px;
+            height: 40px;
+            background: #bdc3c7;
+            -webkit-appearance: none;
+            border-radius: 20px;
+            outline: none;
+            transition: .4s;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        #inputoff-on:checked[type="checkbox"] {
+            background: #3498db;
+        }
+
+        #inputoff-on[type="checkbox"]::before {
+            z-index: 2;
+            position: absolute;
+            content: "";
+            left: 0;
+            width: 45px;
+            height: 45px;
+            background: #fff;
+            border-radius: 50%;
+            transform: scale(1.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: .4s;
+        }
+
+        #inputoff-on:checked[type="checkbox"]::before {
+            left: 60px;
+        }
+
+        .toggle {
+            position: relative;
+            display: inline;
+        }
+
+        lable {
+            position: absolute;
+            color: #fff;
+            font-weight: 600;
+            font-size: 18px;
+            pointer-events: none;
+        }
+
+        .onbtn {
+            bottom: 10px;
+            left: 15px;
+        }
+
+        .offbtn {
+            bottom: 10px;
+            right: 5px;
+            color: #34495e;
         }
 
         .range-slider {
@@ -137,11 +188,44 @@
         input::-moz-focus-outer {
             border: 0;
         }
-
+        #topic{
+            font-size: xx-large;
+        }
         View SCSS Code
     </style>
-    <div class="range-slider"></div>
-    <input class="range-slider__range" type="range" value="100" min="0" max="60000" step="100">
-    <span class="range-slider__value">0</span>
+    <div class="range-slider">
+        <span id="topic">Sound Sensor Power Button</span>
+        <span><div class="toggle">
+            <input id="inputoff-on" type="checkbox">
+            <lable for="" class="onbtn">ON</lable>
+            <lable for="" class="offbtn">OFF</lable>
+        </div></span>
+        <br><br>
+        <span id="t1">sensitivity rate</span>
+        <input id="sensId" class="range-slider__range" type="range" value="0" min="0"
+               max="60000" step="100">
+        <span id="sensId" class="range-slider__value">0</span>
+    </div>
 
+    <script>
+        var rangeSlider = function () {
+            var slider = $('.range-slider'),
+                range = $('.range-slider__range'),
+                value = $('.range-slider__value');
+
+            slider.each(function () {
+                value.each(function () {
+                    var value = $(this).prev().attr('value');
+                    $(this).html(value);
+                });
+
+                range.on('input', function () {
+                    $(this).next(value).html(this.value);
+                });
+            });
+        };
+        rangeSlider();
+
+    </script>
+    </body>
 {% endblock %}
