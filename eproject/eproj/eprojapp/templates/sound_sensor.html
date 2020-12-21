@@ -2,16 +2,7 @@
 {% block content %}
     <head>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $("sens").click(function () {
-                    $("sensId").fadeOut();
-                });
-                $("sens").click(function () {
-                    $("").fadeIn();
-                });
-            });
-        </script>
+
     </head>
 
     <body>
@@ -188,13 +179,16 @@
         input::-moz-focus-outer {
             border: 0;
         }
-        #topic{
+
+        #topic {
             font-size: xx-large;
+            text-align: justify;
         }
+
         View SCSS Code
     </style>
     <div class="range-slider">
-        <span id="topic">Sound Sensor Power Button</span>
+        <span id="topic">SENSOR</span>
         <span><div class="toggle">
             <input id="inputoff-on" type="checkbox">
             <lable for="" class="onbtn">ON</lable>
@@ -224,8 +218,17 @@
                 });
             });
         };
+
         rangeSlider();
 
+        $(document).ready(function () {
+            $(".onbtn").click(function () {
+                $("#sensId").fadeOut();
+            });
+            $(".offbtn").click(function () {
+                $("#sensId").fadeIn();
+            });
+        });
     </script>
     </body>
 {% endblock %}
