@@ -182,8 +182,16 @@
         View SCSS Code
     </style>
     <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+{#        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>#}
+        <script>
+            $(document).ready(function () {
+                $("#inputoff-on").click(function () {
+                    $("#sensId").animate({opacity: "0"});
+                });
+            });
 
+        </script>
     </head>
 
     <body>
@@ -194,7 +202,8 @@
             <input id="inputoff-on" type="checkbox">
 {#                 <button type="submit" value={{excel_path}} onclick="location.href='{% url 'downloadexcel' %}'" name='mybtn2'>Download Excel file</button>#}
             <lable for="" class="onbtn" value={{ noise_sensor.main }} onclick="location.href='{% url 'soundsensor' %}'"> ON</lable>
-            <lable for="" class="offbtn" value={{ sys.exit }} onclick="location.href='{% url 'soundsensor' %}'">OFF</lable>
+            <lable for="" class="offbtn"
+                   value={{ sys.exit }} onclick="location.href='{% url 'soundsensor' %}'">OFF</lable>
         </div></span>
         <br><br>
         <span id="t1">sensitivity rate</span>
